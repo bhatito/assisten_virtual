@@ -19,11 +19,11 @@ def perintah():
         suara = mendengar.listen(source, phrase_time_limit=5)
         try:
             print('Processing...')
-            Layanan = mendengar.recognize_google(suara, language='id-ID')
-            print(Layanan)
+            dengar = mendengar.recognize_google(suara, language='id-ID')
+            print(dengar)
         except:
             pass 
-        return Layanan
+        return dengar
     
 def talk(audio):
     engine.say(audio)
@@ -31,19 +31,19 @@ def talk(audio):
     
 
 def run_michelle():
-    Layanan = perintah()    
-    print(Layanan)
-    if 'Open' in Layanan:
-        video = Layanan.replace('Open','')
+    dengar = perintah()    
+    print(dengar)
+    if 'Open' in dengar:
+        video = dengar.replace('Open','')
         pyt.speak('opening ' + video)
         print(video + 'opening..')
         pywhatkit.playonyt(video)
 
-    if 'find' in Layanan:
-        wiki = Layanan.replace('find','')
+    if 'find' in dengar:
+        wiki = dengar.replace('find','')
         hasil = wikipedia.summary(wiki, sentences=4)
         print(hasil)
         pyt.speak(hasil)
-
+    
 
 run_michelle()
